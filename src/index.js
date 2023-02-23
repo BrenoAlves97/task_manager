@@ -1,32 +1,32 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
 // Biblicoteca de alertas
-import { positions, transitions, Provider as AlertProvider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
+import { positions, transitions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
 // Router Dom
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom'
 
-import "./index.scss";
+import './index.scss'
 
-import App from "./App";
+import App from './App'
 
 const options = {
-    // you can also just use 'bottom center'
-    position: positions.BOTTOM_CENTER,
-    timeout: 2500,
-    offset: "30px",
-    // you can also just use 'scale'
-    transition: transitions.SCALE,
-};
+  // you can also just use 'bottom center'
+  position: positions.BOTTOM_CENTER,
+  timeout: 2500,
+  offset: '30px',
+  // you can also just use 'scale'
+  transition: transitions.SCALE
+}
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <AlertProvider template={AlertTemplate} {...options}>
-                <App />
-            </AlertProvider>
-        </BrowserRouter>
-    </React.StrictMode>
-);
+  <React.StrictMode>
+    <BrowserRouter>
+      <AlertProvider template={AlertTemplate} {...options}>
+        <App />
+      </AlertProvider>
+    </BrowserRouter>
+  </React.StrictMode>
+)

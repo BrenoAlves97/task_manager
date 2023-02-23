@@ -1,54 +1,54 @@
-import "./AddTask.scss";
+import './AddTask.scss'
 
-import React from "react";
-import { useState } from "react";
-import { useAlert } from "react-alert";
-import axios from "axios";
+import React, { useState } from 'react'
 
-import CustomInput from "./CustomInput";
-import CustomButton from "./CustomButton";
+import { useAlert } from 'react-alert'
+import axios from 'axios'
 
-import { FaPlus } from "react-icons/fa";
+import CustomInput from './CustomInput'
+import CustomButton from './CustomButton'
+
+import { FaPlus } from 'react-icons/fa'
 
 const AddTask = ({ fecthTasks }) => {
-    const [task, setTask] = useState("");
-    const alert = useAlert();
+  const [task, setTask] = useState('')
+  const alert = useAlert()
 
-    const onChangeEvent = (e) => {
-        setTask(e.target.value);
-    };
+  const onChangeEvent = (e) => {
+    setTask(e.target.value)
+  }
 
-    const handleTaskAddition = async () => {
-        try {
-            if (task.length === 0) {
-                return alert.error("Necessário preencher os campos antes de adicionar uma tarefa!");
-            }
+  const handleTaskAddition = async () => {
+    try {
+      if (task.length === 0) {
+        return alert.error('Necessário preencher os campos antes de adicionar uma tarefa!')
+      }
 
-            await axios.post("https://fsc-task-manager-backend.herokuapp.com/tasks", {
-                description: task,
-                isCompleted: false,
-            });
-            await fecthTasks();
-            alert.success("Tarefa adicionada com sucesso!");
-            setTask("");
-        } catch (_error) {
-            return alert.error("Não foi possível adicionar tarefa!");
-        }
-    };
+      await axios.post('https://fsc-task-manager-backend.herokuapp.com/tasks', {
+        description: task,
+        isCompleted: false
+      })
+      await fecthTasks()
+      alert.success('Tarefa adicionada com sucesso!')
+      setTask('')
+    } catch (_error) {
+      return alert.error('Não foi possível adicionar tarefa!')
+    }
+  }
 
-    return (
-        <div className="add-task-container">
-            <CustomInput
-                label="Adicionar tarefa..."
-                value={task}
-                onChangeEvent={onChangeEvent}
-                onEnterPress={handleTaskAddition}
-            />
-            <CustomButton onClickButton={handleTaskAddition}>
-                <FaPlus size={14} color="#FFFF" />
-            </CustomButton>
-        </div>
-    );
-};
+  return (
+    <div className="add-task-container">
+      <CustomInput
+        label="Adicionar tarefa..."
+        value={task}
+        onChangeEvent={onChangeEvent}
+        onEnterPress={handleTaskAddition}
+      />
+      <CustomButton onClickButton={handleTaskAddition}>
+        <FaPlus size={14} color="#FFFF" />
+      </CustomButton>
+    </div>
+  )
+}
 
-export default AddTask;
+export default AddTask

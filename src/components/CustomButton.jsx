@@ -1,11 +1,11 @@
-import "./CustomButton.scss";
+import './CustomButton.scss'
 
 const CustomButton = ({ children, onClickButton }) => {
-    return (
-        <div className="custom-button-container" onClick={onClickButton}>
-            {children}
-        </div>
-    );
-};
+  return (
+    <div className="custom-button-container" onClick={onClickButton}>
+      {children}
+    </div>
+  )
+}
 
-export default CustomButton;
+export default CustomButton

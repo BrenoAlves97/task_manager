@@ -1,15 +1,15 @@
-import "./CustomInput.scss";
+import './CustomInput.scss'
 
 const CustomInput = ({ label, value, onChangeEvent, onEnterPress }) => {
-    const handleEnterPress = (event) => {
-        if (event === "Enter") {
-            onEnterPress();
-        } else {
-            return;
-        }
-    };
+  const handleEnterPress = (event) => {
+    if (event === 'Enter') {
+      onEnterPress()
+    } else {
 
-    return (
+    }
+  }
+
+  return (
         <div className="custom-input-container">
             <input
                 className="custom-input"
@@ -18,12 +18,14 @@ const CustomInput = ({ label, value, onChangeEvent, onEnterPress }) => {
                 onChange={(e) => onChangeEvent(e)}
                 onKeyDown={(event) => handleEnterPress(event.key)}
             />
-            {label ? (
-                <label className={`${value.length > 0 ? "shrink" : ""} custom-input-label`}>
+            {label
+              ? (
+                <label className={`${value.length > 0 ? 'shrink' : ''} custom-input-label`}>
                     {label}
                 </label>
-            ) : null}
+                )
+              : null}
         </div>
-    );
-};
-export default CustomInput;
+  )
+}
+export default CustomInput
