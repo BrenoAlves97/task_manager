@@ -13,7 +13,7 @@ const Tasks = () => {
 
   const fecthTasks = useCallback(async () => {
     try {
-      const { data } = await axios.get('https://fsc-task-manager-backend.herokuapp.com/tasks')
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`)
       setTasks(data)
     } catch (_error) {
       return alert.error('Não foi possível resgatar as tarefas!')
@@ -48,7 +48,11 @@ const Tasks = () => {
         <h3>Tarefas concluídas</h3>
         <div className="tasksList">
           {completedTask.map((completedTask, index) => (
-            <TaskItem key={index} task={completedTask} fecthTasks={fecthTasks} />
+            <TaskItem
+              key={index}
+              task={completedTask}
+              fecthTasks={fecthTasks}
+            />
           ))}
         </div>
       </div>

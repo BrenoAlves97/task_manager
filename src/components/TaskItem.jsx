@@ -9,7 +9,7 @@ const TaskItem = ({ fecthTasks, task }) => {
 
   const handleTaskDeletion = async () => {
     try {
-      await axios.delete(`https://fsc-task-manager-backend.herokuapp.com/tasks/${task._id}`)
+      await axios.delete(`${process.env.REACT_APP_API_URL}/tasks/${task._id}`)
       await fecthTasks()
 
       alert.success('A tarefa foi removida com sucesso!')
@@ -20,7 +20,7 @@ const TaskItem = ({ fecthTasks, task }) => {
 
   const handleTaskCompletionChange = async (event) => {
     try {
-      await axios.patch(`https://fsc-task-manager-backend.herokuapp.com/tasks/${task._id}`, {
+      await axios.patch(`${process.env.REACT_APP_API_URL}/tasks/${task._id}`, {
         isCompleted: event
       })
       await fecthTasks()
@@ -34,14 +34,24 @@ const TaskItem = ({ fecthTasks, task }) => {
   return (
     <div className="task-item-container">
       <div className="task-description">
-        <label className={task.isCompleted ? 'checkbox-container-completed' : 'checkbox-container'}>
+        <label
+          className={
+            task.isCompleted
+              ? 'checkbox-container-completed'
+              : 'checkbox-container'
+          }>
           {task.description}
           <input
             type="checkbox"
             defaultChecked={task.isCompleted}
-            onChange={(event) => handleTaskCompletionChange(event.target.checked)}
+            onChange={(event) =>
+              handleTaskCompletionChange(event.target.checked)
+            }
           />
-          <span className={task.isCompleted ? 'checkmark completed' : 'checkmark'}></span>
+          <span
+            className={
+              task.isCompleted ? 'checkmark completed' : 'checkmark'
+            }></span>
         </label>
       </div>
       <div className="delete">
